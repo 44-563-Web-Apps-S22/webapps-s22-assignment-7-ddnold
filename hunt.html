@@ -88,19 +88,25 @@
     let diagnols = [location-6, location-4, location+4, location+6]
     if(click%5==location%5){
       score = score+1;
-      document.getElementById("score").innerHTML = "Location score is: " + score;
     }
     if(Math.floor(click/5)==Math.floor(location/5)){
       score = score+1
-      document.getElementById("score").innerHTML = "Location score is: " + score;
     }
-    if(diagnols.includes(click)){
+    if(location%5 == 0){
+      if(check == location-4 || check == location+6){
+        score = score+1
+      }
+    }
+    else if(location%5 == .8){
+      if(check == location-6 || check == location+4){
+        score = score+1
+      }
+    }
+    else if(diagnols.includes(click)){
       score = score+1
-      document.getElementById("score").innerHTML = "Location core is: " + score;
     }
-    else{
-      document.getElementById("score").innerHTML = "Location score is: " + score;
-    }
+    document.getElementById("score").innerHTML = "Location score is: " + score;
+
   }
 </script>
 </body>
