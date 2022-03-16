@@ -31,10 +31,13 @@
 	  <div class="queue">row item 3</div>  
 	</div>
 	
-	<p> Press the button to create an new element of type div and then add it to the container.
+	<p> Press the add value button to create an new element of type div and then add it to the front of the container.
+		The fetch button will remove the last element, zap will remove any elements with the same value as the input. 
 	</p>
 	<input type="text" id="input"> 
 	<button onclick="makeNewDiv()">Add value</button>
+	<button onclick="fetchItem()">Fetch</button>
+	<button onclick="zap()">zap values</button>
 	
 	
 </body>
@@ -48,7 +51,28 @@
 		/* add it to the container */
 		let container = document.getElementById('target')
 		container.insertBefore(element, container.firstChild)
+		length = length+1
+		console.log("Added element with value: " + document.getElementById("input").value + " to the front of the queue")
 		
+	}
+	function fetchItem(){
+		let queueitems = document.getElementsByClassName("queue")
+		let length = queueitems.length
+		if(length>0){
+			queueitems[length-1].remove();
+			console.log("Removed last element from list")
+		}
+	}
+	function zap(){
+		let queueitems = document.getElementsByClassName("queue")
+		var input = document.getElementById("input").value
+		let length = queueitems.length
+		for(let i=length-1; i>-1; i--){
+			if(queueitems[i].innerHTML==input){
+				queueitems[i].remove()
+				console.log("Removed element " + i + " from queue containing: " + document.getElementById("input").value)
+			}
+		}
 	}
 </script>
 </html>	
