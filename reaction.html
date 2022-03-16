@@ -11,15 +11,15 @@
 </head>
 <body>
   <h1>Dustin Nold's Reaction Timer</h1>
-
+  <h2>Try to click as close to 0 (but not zero) as you can!</h2>
   <p id="target">Your time </p>
   <p id="countdown">Count </p>
 
   <button type="button"
   class="btn btn-primary"
-  onclick="buttonPress2()">
+  onclick="startTime()">
   Start Timer</button>
-  
+
   <button type="button"
   class="btn btn-primary"
   onclick="recordReact()">
@@ -28,11 +28,29 @@
   
   <script> 
   var myTime = undefined;
-
   function recordReact() {
     myTime = Date.now()
     console.log(myTime)
 
+  }
+
+  function startTime() {
+    myTime = undefined;
+    for(let i = 0; i<4; i++){
+      setTimeout(()=>{
+      document.getElementById('countdown').innerHTML = i
+      }, (3-i)*1000)
+    }
+    setTimeout(()=>{
+      if(myTime == undefined){
+        document.getElementById('target').innerHTML = "Too Slow"
+      }
+      else{
+        let buttonTime = Date.now()
+        myTime=buttonTime-myTime
+        document.getElementById('target').innerHTML = "Time was " + myTime
+      }
+    }, 3000)
   }
 
   function buttonPress2() {
