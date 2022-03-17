@@ -33,12 +33,17 @@
     console.log(myTime)
   }
 
+  function randomNumber(min, max) { 
+    return Math.random() * (max - min) + min;
+  } 
+
   function startTime() {
+    let random = randomNumber(2,8)
     myTime = undefined;
-    for(let i = 0; i<4; i++){
+    for(let i = 0; i<random+1; i++){
       setTimeout(()=>{
       document.getElementById('countdown').innerHTML = i
-      }, (3-i)*1000)
+      }, (random-i)*1000)
     }
     setTimeout(()=>{
       if(myTime == undefined){
@@ -49,7 +54,7 @@
         myTime=buttonTime-myTime
         document.getElementById('target').innerHTML = "Time was " + myTime
       }
-    }, 3000)
+    }, random*1000)
   }
   </script>
 
