@@ -31,7 +31,6 @@
   function recordReact() {
     myTime = Date.now()
     console.log(myTime)
-
   }
 
   function startTime() {
@@ -50,12 +49,6 @@
         myTime=buttonTime-myTime
         document.getElementById('target').innerHTML = "Time was " + myTime
       }
-    }, 3000)
-  }
-
-  function buttonPress2() {
-    setTimeout(()=>{
-      document.getElementById('target').style.color = "red"
     }, 3000)
   }
   </script>

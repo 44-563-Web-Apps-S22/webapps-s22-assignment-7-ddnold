@@ -61,11 +61,12 @@
     <div class="col-sm-2"><img id="23" onclick="check(23)" src="bush.jpg"  ></div>
     <div class="col-sm-2"><img id="24" onclick="check(24)" src="bush.jpg"  ></div>
   </div>
+  <button type="button" class="btn btn-primary" onclick="newGame()">New Game</button>
 </div>
 <script>
   const ids = ['0','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24']
   var shakecount = 0
-  var birdlocation = 18
+  var birdlocation = Math.floor(Math.random() * 25)
   var score = 0
   function check(x){
     let id = ids[x];
@@ -106,6 +107,18 @@
       score = score+1
     }
     document.getElementById("score").innerHTML = "Location score is: " + score;
+  }
+  function newGame(){
+    shakecount = 0
+    document.getElementById("shakes").innerHTML = "Number of shakes is: " + shakecount;
+    score = 0
+    document.getElementById("score").innerHTML = "Location score is: " + score;
+    birdlocation = Math.floor(Math.random() * 25)
+    for(let i=0; i<25; i++){
+      let id = ids[i];
+      document.getElementById(id).src="bush.jpg"
+      document.getElementById(id).onclick = function() {check(i);}
+     }
   }
 </script>
 </body>
