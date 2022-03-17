@@ -38,6 +38,7 @@
 	<button onclick="makeNewDiv()">Add value</button>
 	<button onclick="fetchItem()">Fetch</button>
 	<button onclick="zap()">zap values</button>
+	<button onclick="unique()">Only Unique</button>
 	
 	
 </body>
@@ -65,12 +66,27 @@
 	}
 	function zap(){
 		let queueitems = document.getElementsByClassName("queue")
-		var input = document.getElementById("input").value
+		let input = document.getElementById("input").value
 		let length = queueitems.length
 		for(let i=length-1; i>-1; i--){
 			if(queueitems[i].innerHTML==input){
 				queueitems[i].remove()
 				console.log("Removed element " + i + " from queue containing: " + document.getElementById("input").value)
+			}
+		}
+	}
+	function unique(){
+		let queueitems = document.getElementsByClassName("queue")
+		let length = queueitems.length
+		let myArray = []
+		for(let i=length-1; i>-1; i--){
+			if(myArray.includes(queueitems[i].innerHTML)==false){
+				myArray.push(queueitems[i].innerHTML)
+				console.log("One " + document.getElementById("input").value + " can remain")
+			}
+			else{
+				queueitems[i].remove()
+				console.log("Removed element " + i + " from queue containing repeating value: " + document.getElementById("input").value)
 			}
 		}
 	}
